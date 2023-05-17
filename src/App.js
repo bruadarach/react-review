@@ -24,6 +24,7 @@ import ConditionalRenderingFunction from "./components/ConditionalRenderingFunct
 import FormClass from "./components/FormClass";
 import FormFunction from "./components/FormFunction";
 import LifecycleMethodMounting from "./components/LifecycleMethodMounting";
+import LifecycleMethodUpdating from "./components/LifecycleMethodUpdating";
 
 function App() {
   return (
@@ -107,15 +108,18 @@ function App() {
       {/* CSS Modules - not applied in the Child Component*/}
       <div className={styles.success}>Success</div>
       <InlineCSS />
-      {/* Form Handling - input, textarea, select*/}
+      {/* Form Handling - input, textarea, select */}
       <h2>Form</h2>
       <FormClass />
-      {/* Form Handling - input, textarea, select*/}
+      {/* Form Handling - input, textarea, select */}
       <h2>Form</h2>
       <FormFunction />
-      {/* Component Lifecycle Methods - Mounting*/}
+      {/* Component Lifecycle Methods - Mounting */}
       <h2>Component Lifecycle Method - Mounting</h2>
       <LifecycleMethodMounting />
+      {/* Component Lifecycle Methods - Updating */}
+      <h2>Component Lifecycle Method - Updating</h2>
+      <LifecycleMethodUpdating />
     </>
   );
 }
