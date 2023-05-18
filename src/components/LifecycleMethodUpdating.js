@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import LifecycleMethodUpdatingChildComponent from "./LifecycleMethodUpdatingChildComponent";
 
 export class LifecycleMethodUpdating extends Component {
   // rconst
@@ -10,7 +11,7 @@ export class LifecycleMethodUpdating extends Component {
       name: "Sujeong Ji",
     };
 
-    console.log("1. Parent : lifecycleMountingClass - constructor");
+    console.log("0. Parent : lifecycleUpdatingClass - constructor");
   }
 
   // 1. static getDerivedStateFromProps
@@ -18,9 +19,14 @@ export class LifecycleMethodUpdating extends Component {
   // has to return the new state or null
   static getDerivedStateFromProps(props, state) {
     console.log(
-      "2. Parent : lifecycleUpdatingClass - getDerivedStateFromProps"
+      "1. Parent : lifecycleUpdatingClass - getDerivedStateFromProps"
     );
     return null;
+  }
+
+  // 0. componentDidMount
+  componentDidMount() {
+    console.log("0. Parent : lifecycleUpdatingClass - componentDidMount");
   }
 
   // 2. shouldComponentUpdate
@@ -40,13 +46,20 @@ export class LifecycleMethodUpdating extends Component {
     console.log("5. Parent : lifecycleUpdatingClass - componentDidUpdate");
   }
 
+  changeState = () => {
+    this.setState({
+      name: "Minji Ji",
+    });
+  };
+
   // 3. render
   render() {
     console.log("3. Parent :lifecycleUpdatingClass - render");
     return (
       <div>
         Lifecycle Parent : render
-        {/* <LifecycleMethodMountingChildComponent /> */}
+        <button onClick={this.changeState}>Change State</button>
+        <LifecycleMethodUpdatingChildComponent />
       </div>
     );
   }
