@@ -25,6 +25,8 @@ import FormClass from "./components/FormClass";
 import FormFunction from "./components/FormFunction";
 import LifecycleMethodMounting from "./components/LifecycleMethodMounting";
 import LifecycleMethodUpdating from "./components/LifecycleMethodUpdating";
+import FragmentFunction from "./components/FragmentFunction";
+import FragmentFunctionTable from "./components/FragmentFunctionTable";
 
 function App() {
   return (
@@ -120,6 +122,10 @@ function App() {
       {/* Component Lifecycle Methods - Updating */}
       <h2>Component Lifecycle Method - Updating</h2>
       <LifecycleMethodUpdating />
+      {/* Fragment */}
+      <h2>Fragment</h2>
+      <FragmentFunction />
+      <FragmentFunctionTable />
     </>
   );
 }
