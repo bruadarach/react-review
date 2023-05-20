@@ -27,6 +27,7 @@ import LifecycleMethodMounting from "./components/LifecycleMethodMounting";
 import LifecycleMethodUpdating from "./components/LifecycleMethodUpdating";
 import FragmentFunction from "./components/FragmentFunction";
 import FragmentFunctionTable from "./components/FragmentFunctionTable";
+import PureComponentClass from "./components/PureComponentClass";
 
 function App() {
   return (
@@ -126,6 +127,9 @@ function App() {
       <h2>Fragment</h2>
       <FragmentFunction />
       <FragmentFunctionTable />
+      {/* Pure Components */}
+      <h2>Pure Components</h2>
+      <PureComponentClass />
     </>
   );
 }
