@@ -28,6 +28,8 @@ import LifecycleMethodUpdating from "./components/LifecycleMethodUpdating";
 import FragmentFunction from "./components/FragmentFunction";
 import FragmentFunctionTable from "./components/FragmentFunctionTable";
 import PureComponentClass from "./components/PureComponentClass";
+import PureRegularComponentClass from "./components/PureRegularComponentClass";
+import PureRegularParentComponentClass from "./components/PureRegularParentComponentClass";
 
 function App() {
   return (
@@ -129,7 +131,8 @@ function App() {
       <FragmentFunctionTable />
       {/* Pure Components */}
       <h2>Pure Components</h2>
-      <PureComponentClass />
+      {/* <PureComponentClass /> */}
+      <PureRegularParentComponentClass />
     </>
   );
 }
