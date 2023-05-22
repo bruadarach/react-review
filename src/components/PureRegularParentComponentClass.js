@@ -21,6 +21,7 @@ class PureRegularParentComponentClass extends Component {
   }
 
   render() {
+    console.log("**********Parent Component render**********");
     return (
       <div>
         Parent Component
