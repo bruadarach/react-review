@@ -30,6 +30,7 @@ import FragmentFunctionTable from "./components/FragmentFunctionTable";
 import PureComponentClass from "./components/PureComponentClass";
 import PureRegularComponentClass from "./components/PureRegularComponentClass";
 import PureRegularParentComponentClass from "./components/PureRegularParentComponentClass";
+import RefsClass from "./components/RefsClass";
 
 function App() {
   return (
@@ -133,6 +134,9 @@ function App() {
       <h2>Pure Components</h2>
       {/* <PureComponentClass /> */}
       <PureRegularParentComponentClass />
+      {/* Refs - Class Component */}
+      <h2>Refs - Class Component</h2>
+      <RefsClass />
     </>
   );
 }
