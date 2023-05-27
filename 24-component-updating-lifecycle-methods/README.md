@@ -25,8 +25,8 @@
 
   - When a component is being removed from the DOM
   - 1 method
-  - componentWillUnmount()
-    <br>
+    - componentWillUnmount()
+      <br>
 
 - Error Handling
   - When there is an error during rendering, in a lifecycle method, or in the constructor of any child component
