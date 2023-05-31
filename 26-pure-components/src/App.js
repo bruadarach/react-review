@@ -43,12 +43,24 @@
 
     When should you use a pure component?
     : pure component prevents unnecessary re-renders, which can boost performance
+    (example) no re-render when pushing a new item into the same list if not required
+
+
+  Summary
+  - we can create a component by extending the PureComponent class from React
+  - a PureComponent implements the shouldComponentUpdate lifecycle method by performing a shallow comparison on the props and state of the component
+  - if there is no difference, the component is not re-rendered => performance boost
+  - it is a good idea to ensure that all the children components are also pure to avoid unexpected behavior
+  - when you use a pure components and want to rerender, never mutate the state. always return a new object that reflects the new state => see `Counter.js`
+
+  - it is safe to use a regular component, unless you have a performance issue
 
  */
 
 import React, { Component } from "react";
 import PureComp from "./components/PureComp";
 import ParentComp from "./components/ParentComp";
+import Counter from "./components/Counter";
 
 class App extends Component {
   render() {
@@ -56,6 +68,7 @@ class App extends Component {
       <div>
         {/* <PureComp /> */}
         <ParentComp />
+        <Counter />
       </div>
     );
   }
