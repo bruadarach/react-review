@@ -39,13 +39,11 @@
   
   : if there is difference, the component will re-render
 
+  *** The code below deals with a primitive type and prop, 'string', 'Sujeong')
 
+    When should you use a pure component?
+    : pure component prevents unnecessary re-renders, which can boost performance
 
-  When should you use a pure component?
-
-  The code below deals with a primitive type and prop, 'string', 'Sujeong')
-
-  
  */
 
 import React, { Component } from "react";
