@@ -1,70 +1,193 @@
-# Getting Started with Create React App
+# Fragments
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#noExtraNodeToDOM #keyAttribute #<React.Fragment> #<></>
 
-## Available Scripts
+# What is ‘Fragments’?
 
-In the project directory, you can run:
+Fragments groups a list of children elements, without adding extra nodes to the DOM.
 
-### `npm start`
+# 1. Prevent extra node to the DOM
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Example 1 : Parent - Child component rendering
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. ‘To return multiple elements, a component has to enclose in a single parent element.
 
-### `npm test`
+- `<div></div>`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. It is possible to replace the enclosing` <div></div>` tag with `React.Fragment`, and that will prevent the extra node from being added to the DOM.
 
-### `npm run build`
+- `<div></div`> ⇒ `<React.Fragment></React.Fragment>`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```js
+// App.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+import React from "react";
+import FragmentDemo from "./components/FragmentDemo";
+import Table from "./components/Table";
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+const App = () => {
+  return (
+    <div>
+      <FragmentDemo />
+    </div>
+  );
+};
 
-### `npm run eject`
+export default App;
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```js
+// FragmentDemo.js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+//rfce
+import React from "react";
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+function FragmentDemo() {
+  return (
+    // <div>
+    **<React.Fragment>**
+      <h1>Fragment Demo</h1>
+      <p>This describes the FragmentDemo component</p>
+    **</React.Fragment>**
+    // </div>
+  );
+}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+export default FragmentDemo;
+```
 
-## Learn More
+## Example 2: Table
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Error Handling
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> Warning: validateDOMNesting(…): `<td>` cannot appear as a child of `<div>`.
 
-### Code Splitting
+An error will occur if you try to use `<div>` instead of `<React.Fragment>`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This is because `<div>` cannot be a child of `<tr>`.
 
-### Analyzing the Bundle Size
+```js
+// Table.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+// rfce
+import React from "react";
+import Columns from "./Columns";
 
-### Making a Progressive Web App
+function Table() {
+  return (
+    <table>
+      <tbody>
+        <tr>
+          <Columns />
+        </tr>
+      </tbody>
+    </table>
+  );
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+export default Table;
+```
 
-### Advanced Configuration
+```js
+// Colummns.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+// rfce
+import React from "react";
 
-### Deployment
+function Columns() {
+  const items = [];
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  return (
+    // 3. React.Fragment can be replaced with <></>
+    // 3. However, <></> cannot have a key attribute
+    <>
+      {/* 1. An error will occur if you try to use <div> instead of <React.Fragment>: */}
+      {/* 1. This is because <div> cannot be a child of <tr> */}
+      {/* <div> */}
+      {/* <React.Fragment> */}
 
-### `npm run build` fails to minify
+      {/* 2. React.Frangment can have a key attribute */}
+      {items.map((item) => (
+        <React.Fragment key={item.id}>
+          <h1>Title</h1>
+          <p>{item.title}</p>
+        </React.Fragment>
+      ))}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+      <td>Name</td>
+      <td>Sujeong</td>
+      {/* </div> */}
+      {/* </React.Fragment> */}
+    </>
+  );
+}
+
+export default Columns;
+```
+
+### Solution
+
+> Replace the `<div></div>` tag with `<React.Fragment></React.Fragment>`
+
+```js
+// Colummns.js
+
+// rfce
+import React from "react";
+
+function Columns() {
+  const items = [];
+
+  return (
+      {/* 1. An error will occur if you try to use <div> instead of <React.Fragment>: */}
+      {/* 1. This is because <div> cannot be a child of <tr> */}
+      {/* <div> */}
+      <React.Fragment>
+      <td>Name</td>
+      <td>Sujeong</td>
+      {/* </div> */}
+      </React.Fragment>
+    </>
+  );
+}
+
+export default Columns;
+```
+
+# 2. Accept `key` attribute when rendering lists
+
+`<React.Fragment></React.Fragment>` can have a key attribute.
+
+```js
+// Colummns.js
+
+// rfce
+import React from "react";
+
+function Columns() {
+  const items = [];
+
+  return (
+      <React.Fragment>
+      {/* 2. React.Frangment can have a key attribute */}
+      {items.**map**((item) => (
+        **<React.Fragment key={item.id}>**
+          <h1>Title</h1>
+          <p>{item.title}</p>
+        **</React.Fragment>**
+      ))}
+
+      <td>Name</td>
+      <td>Sujeong</td>
+      </React.Fragment>
+  );
+}
+
+export default Columns;
+```
+
+# 3. Replace <React.Fragment> with `<></>`
+
+`<React.Fragment></React.Fragment>` can be replaced with `<></>`.
+
+However, `<></>` cannot have a key attribute.
