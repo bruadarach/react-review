@@ -2,9 +2,13 @@
 
 #noExtraNodeToDOM #keyAttribute #<React.Fragment> #<></>
 
+<br>
+
 # What is ‘Fragments’?
 
 Fragments groups a list of children elements, without adding extra nodes to the DOM.
+
+<br>
 
 # 1. Prevent extra node to the DOM
 
@@ -154,6 +158,8 @@ function Columns() {
 export default Columns;
 ```
 
+<br>
+
 # 2. Accept `key` attribute when rendering lists
 
 `<React.Fragment></React.Fragment>` can have a key attribute.
@@ -185,6 +191,8 @@ function Columns() {
 
 export default Columns;
 ```
+
+<br>
 
 # 3. Replace <React.Fragment> with `<></>`
 
