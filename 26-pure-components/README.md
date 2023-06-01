@@ -124,3 +124,5 @@ Always return a new object or array when dealing with Pure components.
   - By returning a new object, you create a new reference for the state or props, indicating that a change has occurred.
   - React uses this reference comparison to determine whether a component needs to be re-rendered.
   - It is safe to use a regular component, unless you have a performance issue.
+
+<br>
