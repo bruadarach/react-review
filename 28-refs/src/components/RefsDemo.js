@@ -9,6 +9,13 @@
 // 1. focus on input field : as soon as a page is loaded, the input field is focused. (1~3)
 // 2. fetch input value : when a button is clicked, the input value is fetched and displayed in alert box. (4~5)
 
+/*
+    Add `ref` to HTML element
+    Add `ref` to class component
+ */
+
+//=> Add `ref` to HTML element
+
 import React, { Component } from "react";
 
 export class RefsDemo extends Component {
