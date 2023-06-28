@@ -6,6 +6,9 @@ import HookMouse from "./components/HookMouse";
 import MouseContainer from "./components/MouseContainer";
 import IntervalClassCounter from "./components/IntervalClassCounter";
 import IntervalHookCounter from "./components/IntervalHookCounter";
+import DataFetching from "./components/DataFetching";
+import DataFetchingDependency from "./components/DataFetchingDependency";
+import DataFetchingButtonClick from "./DataFetchingButtonClick";
 
 const App = () => {
   return (
@@ -22,6 +25,12 @@ const App = () => {
       <h1>useEffect() with incorrect dependency</h1>
       <IntervalClassCounter />
       <IntervalHookCounter />
+      <h1>useEffect to fetch data</h1>
+      <DataFetching />
+      <h1>useEffect to fetch data with a condition</h1>
+      <DataFetchingDependency />
+      <h1>useEffect() to fetch data by button click</h1>
+      <DataFetchingButtonClick />
     </div>
   );
 };
